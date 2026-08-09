@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexical Approach A1 - Hospitality Chunks (Michael Lewis)</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #10b981; /* Esmeralda hospitalidad */
+      --accent-hover: #059669;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --chunk-highlight: #f59e0b; /* Ámbar para resaltar bloques */
+      --success: #10b981;
+      --error: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 580px;
+    }
+
+    .lesson-header {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lesson-header h1 {
+      font-size: 1.6rem;
+      margin: 0.6rem 0 0.4rem 0;
+    }
+
+    .explicit-info {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      background: var(--card-bg);
+      padding: 0.85rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    .audio-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .audio-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .chunk-display-container {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 1.25rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .instruction-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .chunk-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .chunk-highlight {
+      color: var(--chunk-highlight);
+      border-bottom: 2px dashed var(--chunk-highlight);
+      padding-bottom: 2px;
+    }
+
+    .slot-hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .quiz-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .quiz-section h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .options-grid.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .quiz-btn {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.9rem 1rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .quiz-btn:hover {
+      border-color: var(--accent);
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .feedback-box {
+      padding: 0.85rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    .feedback-box.correct {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .feedback-box.incorrect {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--error);
+      border: 1px solid var(--error);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="app-container">
+    <header class="lesson-header">
+      <span class="badge">Lexical Approach (Michael Lewis)</span>
+      <h1>Hospitality Lexical Chunks</h1>
+      <p class="explicit-info">
+        <strong>Enfoque Léxico:</strong> El idioma consiste en bloques prefabricados (<em>chunks</em>). No pienses en reglas gramaticales sueltas; memoriza y automatiza el bloque completo para responder con fluidez inmediata.
+      </p>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <span id="step-indicator">Item 1 of 10</span>
+        <span id="type-indicator">SENTENCE FRAME</span>
+      </div>
+
+      <!-- Touch Play Layer -->
+      <div class="audio-section">
+        <button id="btn-touch-play" class="btn-primary">
+          <span>🔊</span> Touch Play (Listen to the Chunk)
+        </button>
+        <p id="audio-hint" class="audio-hint">Escucha para activar las opciones de respuesta</p>
+      </div>
+
+      <!-- Chunk Visualizer -->
+      <div class="chunk-display-container">
+        <p class="instruction-text">Lexical Chunk In Focus:</p>
+        <div id="chunk-text" class="chunk-text">Loading...</div>
+        <div id="slot-hint" class="slot-hint"></div>
+      </div>
+
+      <!-- Quiz Section -->
+      <div class="quiz-section">
+        <h3 id="quiz-question">Loading...</h3>
+        <div id="quiz-options" class="options-grid disabled"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div id="feedback" class="feedback-box hidden"></div>
+
+      <!-- Navigation Footer -->
+      <footer class="card-footer">
+        <button id="btn-next" class="btn-secondary hidden">Siguiente Bloque ➔</button>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const lessonData = [
+      {
+        id: 1,
+        type: "Sentence Frame",
+        audioText: "Let me check the system for you.",
+        chunkDisplay: "Let me check <span class='chunk-highlight'>[ the system ]</span> for you.",
+        slotHint: "Marco semi-fijo: 'Let me check [_____] for you'",
+        question: "¿Qué opción completa el bloque de forma natural para verificar disponibilidad?",
+        options: [
+          { text: "Let me check [ our availability ] for you.", correct: true },
+          { text: "Let me check [ if I want ] for you.", correct: false },
+          { text: "Let me check [ doing it ] for you.", correct: false }
+        ],
+        explanation: "¡Correcto! 'Let me check [_____] for you' es un marco semi-fijo clave en recepción."
+      },
+      {
+        id: 2,
+        type: "Institutionalized Utterance",
+        audioText: "How may I assist you today?",
+        chunkDisplay: "<span class='chunk-highlight'>How may I assist you today?</span>",
+        slotHint: "Bloque fijo de saludo y servicio formal",
+        question: "¿Cuál es la función profesional de este bloque fónico?",
+        options: [
+          { text: "Ofrecer ayuda formal al huésped al acercarse a barra/recepción.", correct: true },
+          { text: "Preguntar al huésped cómo llegó al hotel.", correct: false },
+          { text: "Pedirle al huésped que pague la cuenta.", correct: false }
+        ],
+        explanation: "¡Exacto! Es una frase institucionalizada para iniciar la atención al cliente."
+      },
+      {
+        id: 3,
+        type: "Polyword",
+        audioText: "Right away, sir.",
+        chunkDisplay: "<span class='chunk-highlight'>Right away</span>, sir.",
+        slotHint: "Bloque indisoluble (de 2 palabras)",
+        question: "¿Qué significa el 'polyword' de alta frecuencia 'Right away'?",
+        options: [
+          { text: "A la derecha del pasillo.", correct: false },
+          { text: "De inmediato / En este mismo momento.", correct: true },
+          { text: "Tal vez más tarde.", correct: false }
+        ],
+        explanation: "¡Perfecto! 'Right away' reemplaza expresiones más largas y demuestra eficiencia en servicio."
+      },
+      {
+        id: 4,
+        type: "Collocation",
+        audioText: "Could you fill out this form, please?",
+        chunkDisplay: "Could you <span class='chunk-highlight'>fill out this form</span>, please?",
+        slotHint: "Colocación natural: Verbo + Sustantivo",
+        question: "¿Cuál es la colocación (combinación natural) correcta en inglés?",
+        options: [
+          { text: "fill out this form", correct: true },
+          { text: "write inside this form", correct: false },
+          { text: "make this form", correct: false }
+        ],
+        explanation: "¡Bien! En inglés de hospitalidad se dice 'fill out a form', nunca 'write a form'."
+      },
+      {
+        id: 5,
+        type: "Sentence Frame",
+        audioText: "Would you like a late check-out?",
+        chunkDisplay: "Would you like <span class='chunk-highlight'>[ a late check-out ]</span>?",
+        slotHint: "Marco de oferta: 'Would you like [_____]?'",
+        question: "¿Cómo completarías este bloque para ofrecer una bebida de bienvenida?",
+        options: [
+          { text: "Would you like [ a welcome drink ]?", correct: true },
+          { text: "Would you like [ drink something ]?", correct: false },
+          { text: "Would you like [ that I give you water ]?", correct: false }
+        ],
+        explanation: "¡Excelente! 'Would you like + [sustantivo/servicio]' es el estándar directo y cortés."
+      },
+      {
+        id: 6,
+        type: "Institutionalized Utterance",
+        audioText: "Enjoy your stay with us!",
+        chunkDisplay: "<span class='chunk-highlight'>Enjoy your stay</span> with us!",
+        slotHint: "Bloque social de despedida / Check-in completado",
+        question: "¿En qué momento de la interacción utilizas este bloque léxico?",
+        options: [
+          { text: "Al entregar las llaves de la habitación al huésped.", correct: true },
+          { text: "Al pedir la tarjeta de crédito.", correct: false },
+          { text: "Cuando el huésped reporta un problema.", correct: false }
+        ],
+        explanation: "¡Así es! Es el cierre estándar y profesional al finalizar el registro."
+      },
+      {
+        id: 7,
+        type: "Collocation",
+        audioText: "Here is your key card.",
+        chunkDisplay: "Here is your <span class='chunk-highlight'>key card</span>.",
+        slotHint: "Término institucional para la llave del cuarto",
+        question: "¿Cuál es la forma léxica natural de llamar a la llave magnética del hotel?",
+        options: [
+          { text: "key card", correct: true },
+          { text: "room ticket", correct: false },
+          { text: "door pass", correct: false }
+        ],
+        explanation: "¡Correcto! Usar 'key card' refleja dominio del léxico especializado de la industria."
+      },
+      {
+        id: 8,
+        type: "Sentence Frame",
+        audioText: "I'll call a taxi for you right now.",
+        chunkDisplay: "I'll <span class='chunk-highlight'>[ call a taxi ]</span> for you right now.",
+        slotHint: "Marco de acción inmediata: 'I'll [_____] for you right now'",
+        question: "¿Cómo adaptas este bloque si el huésped te pide toallas extra?",
+        options: [
+          { text: "I'll [ send extra towels ] for you right now.", correct: true },
+          { text: "I'll [ towels sending ] for you right now.", correct: false },
+          { text: "I'll [ want to give towels ] for you right now.", correct: false }
+        ],
+        explanation: "¡Impecable! 'I'll + [acción] + for you right now' muestra disposición y rapidez."
+      },
+      {
+        id: 9,
+        type: "Sound Chunk (Connected Speech)",
+        audioText: "Is there anything else I can help you with?",
+        chunkDisplay: "<span class='chunk-highlight'>Is_there_anything_else</span> I can help you with?",
+        slotHint: "Bloque fónico corrido: /ɪzðɛrɛniθɪŋɛls/",
+        question: "¿Cuál es el propósito funcional de este bloque fónico largo?",
+        options: [
+          { text: "Preguntar si el huésped requiere algún servicio adicional antes de retirarse.", correct: true },
+          { text: "Preguntar a qué hora va a dejar la habitación.", correct: false },
+          { text: "Consultar si la habitación está limpia.", correct: false }
+        ],
+        explanation: "¡Correcto! Los huéspedes lo perciben como un solo sonido fluido /iz-der-eni-thing-els/."
+      },
+      {
+        id: 10,
+        type: "Institutionalized Utterance",
+        audioText: "My apologies for the inconvenience.",
+        chunkDisplay: "<span class='chunk-highlight'>My apologies for the inconvenience.</span>",
+        slotHint: "Bloque de manejo de quejas / Servicio recuperativo",
+        question: "¿Cuándo se activa este bloque prefabricado en hospitalidad?",
+        options: [
+          { text: "Para disculparse profesionalmente ante un inconveniente o demora.", correct: true },
+          { text: "Para dar los buenos días por la mañana.", correct: false },
+          { text: "Para solicitar la identificación personal.", correct: false }
+        ],
+        explanation: "¡Excelente! Memorizar este bloque evita buscar palabras cuando se atiende una queja."
+      }
+    ];
+
+    let currentIndex = 0;
+    let hasListened = false;
+
+    const btnTouchPlay = document.getElementById("btn-touch-play");
+    const audioHint = document.getElementById("audio-hint");
+    const chunkTextElem = document.getElementById("chunk-text");
+    const slotHintElem = document.getElementById("slot-hint");
+    const quizQuestion = document.getElementById("quiz-question");
+    const quizOptionsContainer = document.getElementById("quiz-options");
+    const feedbackContainer = document.getElementById("feedback");
+    const btnNext = document.getElementById("btn-next");
+    const stepIndicator = document.getElementById("step-indicator");
+    const typeIndicator = document.getElementById("type-indicator");
+
+    const synth = window.speechSynthesis;
+
+    function loadStep(index) {
+      const step = lessonData[index];
+      hasListened = false;
+      
+      stepIndicator.innerText = `Item ${index + 1} of ${lessonData.length}`;
+      typeIndicator.innerText = step.type.toUpperCase();
+      chunkTextElem.innerHTML = step.chunkDisplay;
+      slotHintElem.innerText = step.slotHint;
+      quizQuestion.innerText = step.question;
+      
+      feedbackContainer.classList.add("hidden");
+      btnNext.classList.add("hidden");
+      audioHint.innerText = "Escucha el bloque fónico para desbloquear las opciones";
+      audioHint.style.color = "var(--text-muted)";
+      
+      quizOptionsContainer.classList.add("disabled");
+
+      // Render Options
+      quizOptionsContainer.innerHTML = "";
+      step.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "quiz-btn";
+        btn.innerHTML = `<span>${opt.text}</span>`;
+        btn.addEventListener("click", () => handleOptionSelect(opt, step));
+        quizOptionsContainer.appendChild(btn);
+      });
+    }
+
+    btnTouchPlay.addEventListener("click", () => {
+      const step = lessonData[currentIndex];
+      const utterance = new SpeechSynthesisUtterance(step.audioText);
+      utterance.lang = "en-US";
+      utterance.rate = 0.85; // Velocidad de articulación clara para A1
+      
+      synth.speak(utterance);
+
+      hasListened = true;
+      audioHint.innerText = "✓ Audio reproducido. Opciones activadas.";
+      audioHint.style.color = "var(--accent)";
+      quizOptionsContainer.classList.remove("disabled");
+    });
+
+    function handleOptionSelect(selectedOption, step) {
+      if (!hasListened) return;
+
+      feedbackContainer.classList.remove("hidden", "correct", "incorrect");
+      
+      if (selectedOption.correct) {
+        feedbackContainer.classList.add("correct");
+        feedbackContainer.innerText = `✓ ${step.explanation}`;
+      } else {
+        feedbackContainer.classList.add("incorrect");
+        feedbackContainer.innerText = "✗ Revisa la estructura del bloque léxico e inténtalo de nuevo.";
+      }
+
+      btnNext.classList.remove("hidden");
+    }
+
+    btnNext.addEventListener("click", () => {
+      currentIndex++;
+      if (currentIndex < lessonData.length) {
+        loadStep(currentIndex);
+      } else {
+        alert("🎉 ¡Felicidades! Has completado el entrenamiento de bloques léxicos de hospitalidad.");
+        currentIndex = 0;
+        loadStep(currentIndex);
+      }
+    });
+
+    // Initialize
+    loadStep(currentIndex);
+  </script>
+</body>
+</html>
