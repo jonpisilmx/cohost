@@ -535,53 +535,6 @@
             border-radius: var(--radius-md);
         }
 
-        /* --- FULL SERVICES MATRIX --- */
-        .services-full-section {
-            margin-bottom: 90px;
-        }
-
-        .services-grid-12 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .service-box {
-            background: var(--surface-white);
-            padding: 32px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-soft);
-            transition: all 0.3s ease;
-        }
-
-        .service-box:hover {
-            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
-            transform: translateY(-3px);
-        }
-
-        .service-box-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--bg-body);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-
-        .service-box h4 {
-            font-size: 1.35rem;
-            margin-bottom: 10px;
-        }
-
-        .service-box p {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
-
         /* --- TESTIMONIALS --- */
         .testimonials-section {
             margin-bottom: 90px;
@@ -701,7 +654,7 @@
             .hero-grid, .featured-box, .olive-grid, .cta-banner, .package-card-main {
                 grid-template-columns: 1fr;
             }
-            .preview-grid, .services-grid-12, .reviews-grid, .cleaning-grid {
+            .preview-grid, .reviews-grid, .cleaning-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .features-grid {
@@ -713,7 +666,7 @@
         }
 
         @media (max-width: 640px) {
-            .preview-grid, .services-grid-12, .reviews-grid, .features-grid, .cleaning-grid {
+            .preview-grid, .reviews-grid, .features-grid, .cleaning-grid {
                 grid-template-columns: 1fr;
             }
             .nav-links {
@@ -739,7 +692,6 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#paquetes">Paquetes & Precios</a></li>
-                <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -805,7 +757,7 @@
                     </div>
                 </div>
                 <div class="feature-item">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 001 1m-6 0h6"/></svg>
+                    <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 01-1 1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                     <div>
                         <div class="feature-title">Mantenimiento Local</div>
                         <div class="feature-sub">Cuidado constante de la finca</div>
@@ -921,25 +873,25 @@
         </div>
 
         <div class="preview-grid">
-            <a href="#servicios" class="preview-card">
+            <a href="#paquetes" class="preview-card">
                 <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80" alt="Gestión de Anuncios">
                 <div class="preview-overlay">
                     <div class="preview-card-title">Anuncios & Reserva <span>→</span></div>
                 </div>
             </a>
-            <a href="#servicios" class="preview-card">
+            <a href="#paquetes" class="preview-card">
                 <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80" alt="Diseño e Interiorismo">
                 <div class="preview-overlay">
                     <div class="preview-card-title">Interiorismo <span>→</span></div>
                 </div>
             </a>
-            <a href="#servicios" class="preview-card">
+            <a href="#paquetes" class="preview-card">
                 <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Limpieza y Cuidados">
                 <div class="preview-overlay">
                     <div class="preview-card-title">Limpieza & Care <span>→</span></div>
                 </div>
             </a>
-            <a href="#servicios" class="preview-card">
+            <a href="#paquetes" class="preview-card">
                 <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Legal y Licencias">
                 <div class="preview-overlay">
                     <div class="preview-card-title">Legal & Seguros <span>→</span></div>
@@ -976,89 +928,6 @@
                     <a href="https://wa.me/529581098282" class="btn btn-outline" style="color: white; border-color: white;" target="_blank">Conocer la Coanfitriona →</a>
                 </div>
                 <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Relax y gestión de propiedades" class="olive-img">
-            </div>
-        </div>
-    </section>
-
-    <!-- Complete Services Grid -->
-    <section class="container services-full-section" id="servicios">
-        <div style="text-align: center; max-width: 650px; margin: 0 auto 50px;">
-            <span class="section-subtitle">◇ Catálogo Integral</span>
-            <h2 class="section-title">Servicios diseñados para la excelencia</h2>
-        </div>
-
-        <div class="services-grid-12">
-            <!-- 1 -->
-            <div class="service-box">
-                <div class="service-box-icon">⚙</div>
-                <h4>Configuración de Anuncios</h4>
-                <p>Creación y optimización de listings en Airbnb y plataformas principales con descripciones estratégicas.</p>
-            </div>
-            <!-- 2 -->
-            <div class="service-box">
-                <div class="service-box-icon">💬</div>
-                <h4>Respuesta y Seguimiento</h4>
-                <p>Atención inmediata y cálida a las dudas de posibles viajeros para incrementar la conversión a reservas.</p>
-            </div>
-            <!-- 3 -->
-            <div class="service-box">
-                <div class="service-box-icon">📈</div>
-                <h4>Precios y Disponibilidad</h4>
-                <p>Estrategia dinámica de tarifas, precios de temporada alta/baja y gestión continua de calendarios.</p>
-            </div>
-            <!-- 4 -->
-            <div class="service-box">
-                <div class="service-box-icon">📋</div>
-                <h4>Gestión de Solicitudes</h4>
-                <p>Filtro riguroso de huéspedes para proteger la integridad y tranquilidad de tu vivienda.</p>
-            </div>
-            <!-- 5 -->
-            <div class="service-box">
-                <div class="service-box-icon">🌐</div>
-                <h4>Comunicación Multilingüe</h4>
-                <p>Soporte fluido en diversos idiomas para atender eficientemente a la comunidad turística internacional.</p>
-            </div>
-            <!-- 6 -->
-            <div class="service-box">
-                <div class="service-box-icon">📍</div>
-                <h4>Asistencia Presencial</h4>
-                <p>Acompañamiento en zona, check-in/out personalizado y solución de imprevistos durante la estancia.</p>
-            </div>
-            <!-- 7 -->
-            <div class="service-box">
-                <div class="service-box-icon">✨</div>
-                <h4>Limpieza y Mantenimiento</h4>
-                <p>Coordinación de equipos de limpieza profunda con estándares hoteleros y reparaciones preventivas.</p>
-            </div>
-            <!-- 8 -->
-            <div class="service-box">
-                <div class="service-box-icon">📷</div>
-                <h4>Fotografía y Video</h4>
-                <p>Generación de contenido visual fresco y atractivo para destacar en los resultados de búsqueda.</p>
-            </div>
-            <!-- 9 -->
-            <div class="service-box">
-                <div class="service-box-icon">🌿</div>
-                <h4>Diseño e Interiorismo</h4>
-                <p>Asesoría en decoración y remodelación adaptada al concepto arquitectónico local de la costa.</p>
-            </div>
-            <!-- 10 -->
-            <div class="service-box">
-                <div class="service-box-icon">📜</div>
-                <h4>Permisos y Licencias</h4>
-                <p>Asesoramiento operativo en normativas de hospedaje y licencias locales requeridas.</p>
-            </div>
-            <!-- 11 -->
-            <div class="service-box">
-                <div class="service-box-icon">🛡</div>
-                <h4>Aseguramiento Certificado</h4>
-                <p>Protección y gestión de coberturas con empresas aseguradoras certificadas del sector.</p>
-            </div>
-            <!-- 12 -->
-            <div class="service-box">
-                <div class="service-box-icon">🔍</div>
-                <h4>Seguimiento a Daños</h4>
-                <p>Reclamación oportuna y minuciosa de seguros ante eventualidades para lograr compensaciones justas.</p>
             </div>
         </div>
     </section>
@@ -1144,8 +1013,8 @@
                     <h5>Servicios</h5>
                     <ul class="footer-links">
                         <li><a href="#paquetes">Paquetes</a></li>
-                        <li><a href="#servicios">Precios Dinámicos</a></li>
-                        <li><a href="#servicios">Interiorismo</a></li>
+                        <li><a href="#paquetes">Precios Dinámicos</a></li>
+                        <li><a href="#experiencia">Interiorismo</a></li>
                         <li><a href="#paquetes">Limpieza</a></li>
                     </ul>
                 </div>
@@ -1160,8 +1029,8 @@
                 <div class="footer-col">
                     <h5>Legal</h5>
                     <ul class="footer-links">
-                        <li><a href="#servicios">Seguros</a></li>
-                        <li><a href="#servicios">Licencias</a></li>
+                        <li><a href="#paquetes">Seguros</a></li>
+                        <li><a href="#paquetes">Licencias</a></li>
                         <li><a href="#">Privacidad</a></li>
                     </ul>
                 </div>
