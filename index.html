@@ -18,7 +18,7 @@
             --surface-white: #FFFFFF;
             --text-dark: #2B2A27;        /* Soft Charcoal */
             --text-muted: #6C6A64;       /* Warm Gray */
-            --olive-dark: #3F4839;       /* Deep Forest/Olive Green (Accent banner) */
+            --olive-dark: #3F4839;       /* Deep Forest/Olive Green */
             --olive-light: #525C4B;
             --border-soft: #E2DDD3;
             --radius-lg: 20px;
@@ -220,7 +220,7 @@
             font-weight: 500;
         }
 
-        /* Hero Image Layout */
+        /* Hero Gallery Layout */
         .hero-gallery {
             position: relative;
             display: grid;
@@ -254,7 +254,7 @@
             max-width: 240px;
         }
 
-        /* --- FEATURE HIGHLIGHTS BAR --- */
+        /* --- FEATURES BAR --- */
         .features-bar {
             padding: 40px 0;
             border-top: 1px solid var(--border-soft);
@@ -291,7 +291,7 @@
             color: var(--text-muted);
         }
 
-        /* --- CATEGORIES / SERVICES PREVIEW GRID --- */
+        /* --- SECTION HEADERS --- */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -312,6 +312,117 @@
             font-size: 2.8rem;
         }
 
+        /* --- PACKAGES & PRICING SECTION --- */
+        .pricing-section {
+            margin-bottom: 90px;
+        }
+
+        .package-card-main {
+            background: var(--surface-card);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            border: 1px solid var(--border-soft);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .package-tag {
+            display: inline-block;
+            background: var(--olive-dark);
+            color: #FFFFFF;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .package-price-box {
+            background: var(--surface-white);
+            border-radius: var(--radius-md);
+            padding: 36px;
+            border: 1px solid var(--border-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1;
+        }
+
+        .price-note {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        .package-features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .package-features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.98rem;
+            color: var(--text-dark);
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--olive-dark);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Cleaning Services Grid */
+        .cleaning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .cleaning-card {
+            background: var(--surface-white);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-soft);
+            text-align: center;
+        }
+
+        .cleaning-size {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .cleaning-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /* --- CATEGORIES / PREVIEW GRID --- */
         .preview-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -370,7 +481,7 @@
             font-size: 1rem;
         }
 
-        /* --- FEATURED PRODUCT / HIGHLIGHT SECTION --- */
+        /* --- FEATURED SECTION --- */
         .featured-box {
             background: var(--surface-card);
             border-radius: var(--radius-lg);
@@ -389,26 +500,12 @@
             border-radius: var(--radius-md);
         }
 
-        .featured-content h3 {
-            font-size: 2.6rem;
-            margin-bottom: 16px;
-        }
-
-        .featured-content p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* --- OLIVE BANNER SECTION --- */
+        /* --- OLIVE BANNER --- */
         .olive-banner {
             background-color: var(--olive-dark);
             color: #FFFFFF;
             border-radius: var(--radius-lg);
             padding: 60px;
-            position: relative;
-            overflow: hidden;
             margin-bottom: 90px;
         }
 
@@ -485,7 +582,7 @@
             line-height: 1.55;
         }
 
-        /* --- TESTIMONIALS / TRUST --- */
+        /* --- TESTIMONIALS --- */
         .testimonials-section {
             margin-bottom: 90px;
         }
@@ -509,17 +606,11 @@
             margin-bottom: 16px;
         }
 
-        .review-quote {
-            font-size: 0.98rem;
-            color: var(--text-dark);
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-
         .reviewer {
             display: flex;
             align-items: center;
             gap: 12px;
+            margin-top: 16px;
         }
 
         .reviewer-img {
@@ -529,17 +620,7 @@
             object-fit: cover;
         }
 
-        .reviewer-name {
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .reviewer-role {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-        }
-
-        /* --- CALL TO ACTION BANNER (FORM) --- */
+        /* --- CTA FORM --- */
         .cta-banner {
             background: #E8E4DA;
             border-radius: var(--radius-lg);
@@ -549,16 +630,6 @@
             gap: 40px;
             align-items: center;
             margin-bottom: 90px;
-        }
-
-        .cta-banner h2 {
-            font-size: 2.8rem;
-            margin-bottom: 16px;
-        }
-
-        .cta-banner p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
         }
 
         .cta-form {
@@ -581,10 +652,6 @@
             outline: none;
         }
 
-        .form-input:focus {
-            border-color: var(--text-dark);
-        }
-
         /* --- FOOTER --- */
         footer {
             padding: 60px 0 40px;
@@ -599,7 +666,6 @@
         }
 
         .footer-col h5 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -618,11 +684,6 @@
             text-decoration: none;
             color: var(--text-muted);
             font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-dark);
         }
 
         .footer-bottom {
@@ -635,19 +696,16 @@
             color: var(--text-muted);
         }
 
-        /* Responsive Breakpoints */
+        /* Responsive */
         @media (max-width: 1024px) {
-            .hero-grid, .featured-box, .olive-grid, .cta-banner {
+            .hero-grid, .featured-box, .olive-grid, .cta-banner, .package-card-main {
                 grid-template-columns: 1fr;
             }
-            .preview-grid, .services-grid-12, .reviews-grid {
+            .preview-grid, .services-grid-12, .reviews-grid, .cleaning-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .footer-grid {
-                grid-template-columns: 1fr repeat(2, 1fr);
             }
             .hero-title {
                 font-size: 3.2rem;
@@ -655,7 +713,7 @@
         }
 
         @media (max-width: 640px) {
-            .preview-grid, .services-grid-12, .reviews-grid, .features-grid {
+            .preview-grid, .services-grid-12, .reviews-grid, .features-grid, .cleaning-grid {
                 grid-template-columns: 1fr;
             }
             .nav-links {
@@ -680,9 +738,9 @@
                 <span>Mazunte • Oaxaca</span>
             </a>
             <ul class="nav-links">
+                <li><a href="#paquetes">Paquetes & Precios</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <a href="https://wa.me/529581098282" class="btn btn-dark" target="_blank">Contactar Coanfitrión</a>
@@ -699,10 +757,10 @@
                     CoHost Partners te ofrece la tranquilidad de delegar la administración de tu propiedad vacacional en manos de un equipo especializado en la costa de Oaxaca.
                 </p>
                 <div class="hero-cta-group">
-                    <a href="https://wa.me/529581098287?text=Hola,%20busco%20un%20coanfitri%C3%B3n" class="btn btn-dark" target="_blank">
+                    <a href="https://wa.me/529581098282?text=Hola,%20busco%20un%20coanfitri%C3%B3n" class="btn btn-dark" target="_blank">
                         ¿Buscas un coanfitrión? →
                     </a>
-                    <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+                    <a href="#paquetes" class="btn btn-outline">Ver Paquetes</a>
                 </div>
                 <div class="hero-social-proof">
                     <div class="avatar-group">
@@ -747,7 +805,7 @@
                     </div>
                 </div>
                 <div class="feature-item">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    <svg class="feature-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 001 1m-6 0h6"/></svg>
                     <div>
                         <div class="feature-title">Mantenimiento Local</div>
                         <div class="feature-sub">Cuidado constante de la finca</div>
@@ -763,6 +821,94 @@
             </div>
         </div>
     </div>
+
+    <!-- PACKAGES & PRICING SECTION -->
+    <section class="container pricing-section" id="paquetes">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 50px;">
+            <span class="section-subtitle">◇ PAQUETE DE SERVICIOS INTEGRAL</span>
+            <h2 class="section-title">Transparencia y comisión justa</h2>
+            <p style="color: var(--text-muted); margin-top: 10px;">
+                Nos encargamos de toda la gestión comercial, atención a huéspedes y supervisión de la propiedad con un esquema sencillo basado en el éxito de tus reservas.
+            </p>
+        </div>
+
+        <!-- Main Package Card -->
+        <div class="package-card-main">
+            <div>
+                <span class="package-tag">Plan Coanfitrión Total</span>
+                <h3 style="font-size: 2.2rem; margin-bottom: 16px;">¿Qué incluye nuestro servicio?</h3>
+                
+                <ul class="package-features-list">
+                    <li>
+                        <svg class="check-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        <span><strong>Presencia Multiplataforma:</strong> Posicionamiento actualizado en Airbnb, Booking, Vrbo y Expedia.</span>
+                    </li>
+                    <li>
+                        <svg class="check-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        <span><strong>Fotografía y Video:</strong> Sesión inicial y actualización de material audiovisual ante cualquier cambio en la propiedad.</span>
+                    </li>
+                    <li>
+                        <svg class="check-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        <span><strong>Atención a Reservas & Tarifas:</strong> Respuesta inmediata, seguimiento a huéspedes y ajuste dinámico de precios por temporada.</span>
+                    </li>
+                    <li>
+                        <svg class="check-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        <span><strong>Recepción y Asistencia:</strong> Acompañamiento telefónico previo, bienvenida en persona y resolución de problemas durante toda la estancia.</span>
+                    </li>
+                    <li>
+                        <svg class="check-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        <span><strong>Mantenimiento y Visoría Local:</strong> Detección de desperfectos, gestión y pago a plomeros, electricistas, albañiles y personal de limpieza.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="package-price-box">
+                <div>
+                    <span style="font-size: 0.85rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted);">Comisión por Reserva</span>
+                    <div class="price-number">15%</div>
+                    <div style="font-size: 0.95rem; font-weight: 600; margin-top: 4px;">Del monto total de reserva</div>
+                    <div class="price-note">
+                        <em>Calculado antes de impuestos y deducciones.</em><br><br>
+                        <strong>Ejemplo práctico:</strong> En una reserva donde el huésped paga $3,000 MXN, la comisión para CoHost Partners es de <strong>$450 MXN</strong>.
+                    </div>
+                </div>
+                <a href="https://wa.me/529581098282?text=Hola,%20me%20interesa%20contratar%20el%20Paquete%20de%20Coanfitri%C3%B3n%20al%2015%25" class="btn btn-dark" style="margin-top: 24px; text-align: center;" target="_blank">
+                    Contratar Coanfitrión →
+                </a>
+            </div>
+        </div>
+
+        <!-- Cleaning Services Section -->
+        <div style="margin-top: 60px;">
+            <div style="text-align: center; max-width: 650px; margin: 0 auto 30px;">
+                <span class="section-subtitle">◇ COMPLEMENTO OPERATIVO</span>
+                <h3 style="font-size: 2.2rem;">Servicios de Limpieza & Sanitización</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;">
+                    Contamos con equipo especializado para garantizar habitaciones impecables. Coordinamos recogida y entrega de blancos con lavanderías locales, hacemos la limpieza profunda, sanitización y la puesta a punto para el siguiente huésped.
+                </p>
+            </div>
+
+            <div class="cleaning-grid">
+                <div class="cleaning-card">
+                    <div class="cleaning-size">Hasta 50 m²</div>
+                    <div class="cleaning-price">$500 <span style="font-size: 1rem; font-weight: normal;">MXN</span></div>
+                    <p style="font-size: 0.88rem; color: var(--text-muted);">Por servicio de limpieza, sanitización y cambio de blancos.</p>
+                </div>
+
+                <div class="cleaning-card">
+                    <div class="cleaning-size">Hasta 100 m²</div>
+                    <div class="cleaning-price">$850 <span style="font-size: 1rem; font-weight: normal;">MXN</span></div>
+                    <p style="font-size: 0.88rem; color: var(--text-muted);">Por servicio de limpieza, sanitización y cambio de blancos.</p>
+                </div>
+
+                <div class="cleaning-card">
+                    <div class="cleaning-size">Hasta 200 m²</div>
+                    <div class="cleaning-price">$1,600 <span style="font-size: 1rem; font-weight: normal;">MXN</span></div>
+                    <p style="font-size: 0.88rem; color: var(--text-muted);">Por servicio de limpieza, sanitización y cambio de blancos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Pillars / Areas Grid -->
     <section class="container" id="experiencia">
@@ -811,7 +957,7 @@
                 <p>
                     Cada propiedad tiene un carácter único. Nos encargamos de revitalizar los interiores, realizar sesiones de fotografía y video profesional actualizado, y crear una ambientación que enamore a los viajeros y aumente la tarifa media por noche.
                 </p>
-                <a href="https://wa.me/529581098287" class="btn btn-dark" target="_blank">Consultar Remodelación →</a>
+                <a href="https://wa.me/529581098282" class="btn btn-dark" target="_blank">Consultar Remodelación →</a>
             </div>
             <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80" alt="Interiorismo Alojamiento" class="featured-img">
         </div>
@@ -827,7 +973,7 @@
                     <p>
                         Delegar en CoHost Partners te permite liberar tu tiempo mientras profesionales locales capacitados velan por el estado físico de tu espacio y la satisfacción total del huésped.
                     </p>
-                    <a href="https://wa.me/529581098287" class="btn btn-outline" style="color: white; border-color: white;" target="_blank">Conocer al coanfitrión→</a>
+                    <a href="https://wa.me/529581098282" class="btn btn-outline" style="color: white; border-color: white;" target="_blank">Conocer la Coanfitriona →</a>
                 </div>
                 <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Relax y gestión de propiedades" class="olive-img">
             </div>
@@ -917,7 +1063,7 @@
         </div>
     </section>
 
-    <!-- Testimonials / Trust -->
+    <!-- Testimonials -->
     <section class="container testimonials-section">
         <div class="section-header">
             <div>
@@ -933,8 +1079,8 @@
                 <div class="reviewer">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="reviewer-img" alt="Propietaria">
                     <div>
-                        <div class="reviewer-name">Sarah J.</div>
-                        <div class="reviewer-role">Propietaria en Mazunte</div>
+                        <div style="font-weight:700; font-size:0.9rem;">Sarah J.</div>
+                        <div style="font-size:0.78rem; color:var(--text-muted);">Propietaria en Mazunte</div>
                     </div>
                 </div>
             </div>
@@ -945,8 +1091,8 @@
                 <div class="reviewer">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="reviewer-img" alt="Propietario">
                     <div>
-                        <div class="reviewer-name">Michael T.</div>
-                        <div class="reviewer-role">Propietario en San Agustinillo</div>
+                        <div style="font-weight:700; font-size:0.9rem;">Michael T.</div>
+                        <div style="font-size:0.78rem; color:var(--text-muted);">Propietario en San Agustinillo</div>
                     </div>
                 </div>
             </div>
@@ -957,8 +1103,8 @@
                 <div class="reviewer">
                     <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=100&q=80" class="reviewer-img" alt="Propietaria">
                     <div>
-                        <div class="reviewer-name">Emily R.</div>
-                        <div class="reviewer-role">Propietaria en Zipolite</div>
+                        <div style="font-weight:700; font-size:0.9rem;">Emily R.</div>
+                        <div style="font-size:0.78rem; color:var(--text-muted);">Propietaria en Zipolite</div>
                     </div>
                 </div>
             </div>
@@ -973,7 +1119,7 @@
                 <h2>¿Tienes una propiedad en la costa?</h2>
                 <p>Platiquemos sobre cómo podemos ayudarte a maximizar el rendimiento de tu alojamiento y brindarle la mejor experiencia a tus huéspedes.</p>
                 <br>
-                <p><strong>Tel / WhatsApp:</strong> 958 109 8287<br><strong>Ubicación:</strong> Mazunte, Oaxaca</p>
+                <p><strong>Tel / WhatsApp:</strong> 958 109 8282<br><strong>Ubicación:</strong> Mazunte, Oaxaca</p>
             </div>
             <form class="cta-form" onsubmit="alert('¡Gracias por comunicarte! Te contactaremos a la brevedad.'); return false;">
                 <input type="text" class="form-input" placeholder="Tu Nombre Completo" required>
@@ -997,16 +1143,16 @@
                 <div class="footer-col">
                     <h5>Servicios</h5>
                     <ul class="footer-links">
-                        <li><a href="#servicios">Anuncios</a></li>
+                        <li><a href="#paquetes">Paquetes</a></li>
                         <li><a href="#servicios">Precios Dinámicos</a></li>
                         <li><a href="#servicios">Interiorismo</a></li>
-                        <li><a href="#servicios">Limpieza</a></li>
+                        <li><a href="#paquetes">Limpieza</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h5>Empresa</h5>
                     <ul class="footer-links">
-                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#experiencia">Nosotros</a></li>
                         <li><a href="#experiencia">Experiencia</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
@@ -1014,15 +1160,15 @@
                 <div class="footer-col">
                     <h5>Legal</h5>
                     <ul class="footer-links">
-                        <li><a href="#">Seguros</a></li>
-                        <li><a href="#">Licencias</a></li>
+                        <li><a href="#servicios">Seguros</a></li>
+                        <li><a href="#servicios">Licencias</a></li>
                         <li><a href="#">Privacidad</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h5>Contacto</h5>
                     <ul class="footer-links">
-                        <li><a href="tel:9581098282">958 109 8287</a></li>
+                        <li><a href="tel:9581098282">958 109 8282</a></li>
                         <li><a href="#">Mazunte, Oaxaca</a></li>
                     </ul>
                 </div>
